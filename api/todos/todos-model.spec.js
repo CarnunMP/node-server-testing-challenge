@@ -2,6 +2,10 @@ const db = require('../../database/db-config');
 
 const Todos = require('./todos-model');
 
+beforeEach(async () => {
+  await db('todos').truncate();
+});
+
 describe('todos model', () => {
   describe('insert()', () => {
     it('should insert the provided todos into the db', async () => {

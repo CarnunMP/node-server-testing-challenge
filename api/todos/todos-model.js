@@ -15,7 +15,10 @@ function findById(id) {
     .where({ id });
 }
 
-function insert(todo) {
+async function insert(todo) {
+  const [id] = await db('todos').insert(todo, 'id');
+
   return db('todos')
-    .insert(todo);
+    .where({ id })
+    .first();
 }
