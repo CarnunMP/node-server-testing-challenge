@@ -19,5 +19,13 @@ describe('todos model', () => {
       todos = await db('todos');
       expect(todos).toHaveLength(todosLength + 2);
     });
+
+    it('should insert the porvided todo into the db', async () => {
+      let todo = await Todos.insert({ text: 'wash up' });
+      expect(todo.text).toBe('wash up');
+
+      todo = await Todos.insert({ text: 'buy groceries' });
+      expect(todo.text).toBe('buy groceries');
+    })
   });
 });
