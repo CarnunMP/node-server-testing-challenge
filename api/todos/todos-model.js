@@ -3,7 +3,8 @@ const db = require('../../database/db-config');
 module.exports = {
   find,
   findById,
-  insert
+  insert,
+  remove
 }
 
 function find() {
@@ -21,4 +22,14 @@ async function insert(todo) {
   return db('todos')
     .where({ id })
     .first();
+}
+
+async function remove(id) {
+  const todo = await findById(id);
+
+  db('todos')
+    .where({ id })
+    .del();
+
+  return todo[0];
 }

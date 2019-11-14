@@ -20,12 +20,18 @@ describe('todos model', () => {
       expect(todos).toHaveLength(todosLength + 2);
     });
 
-    it('should insert the porvided todo into the db', async () => {
+    it('should insert the provided todo into the db', async () => {
       let todo = await Todos.insert({ text: 'wash up' });
       expect(todo.text).toBe('wash up');
 
       todo = await Todos.insert({ text: 'buy groceries' });
       expect(todo.text).toBe('buy groceries');
-    })
+    });
+
+    it('should be able to delete a todo', async () => {
+      const insertedTodo = await Todos.insert({ text: 'wash up' });
+      const removedTodo = await Todos.remove(insertedTodo.id);
+      expect(removedTodo).toEqual(insertedTodo);
+    });
   });
 });
