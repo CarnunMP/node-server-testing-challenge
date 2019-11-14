@@ -9,8 +9,8 @@ describe('todos model', () => {
       const todosLength = todos.length;
       expect(todos).toHaveLength(todosLength);
 
-      await Todos.insert({ name: 'gaffer' });
-      await Todos.insert({ name: 'sam' });
+      await Todos.insert({ text: 'meet grandma'});
+      await Todos.insert({ text: 'vote'});
 
       todos = await db('todos');
       expect(todos).toHaveLength(todosLength + 2);
