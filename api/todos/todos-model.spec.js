@@ -2,7 +2,7 @@ const db = require('../../database/db-config');
 
 const Todos = require('./todos-model');
 
-beforeEach(async () => {
+beforeAll(async () => {
   await db('todos').truncate();
 });
 

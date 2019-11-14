@@ -20,4 +20,11 @@ describe('server.js', () => {
       expect(response.body).toEqual(expectedBody);
     });
   });
+
+  describe('[GET] /todos', () => {
+    it('should return a list of todo objects', async () => {
+      const todos = await request(server).get('/todos');
+      expect(todos.body).toBe('array'); // Not sure how to write this one! Been scratching my head...
+    })
+  })
 });
